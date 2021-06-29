@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:icon="@drawable/ic_btn_action_menu"
+        app:showAsAction="ifRoom"
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/exit_menu_button"
+                android:icon="@drawable/ic_exit"
+                android:iconTint="#03A9F4"
+                android:title="@string/exit_menu_button"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menu_delete_all"
+                android:icon="@drawable/ic_delete"
+                android:iconTint="#03A9F4"
+                android:title="@string/delete_all_menu_button"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+</menu>
