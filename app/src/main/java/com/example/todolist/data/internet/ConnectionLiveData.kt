@@ -1,4 +1,4 @@
-package com.example.todolist
+package com.example.todolist.data.internet
 
 
 import android.content.Context
@@ -9,6 +9,7 @@ import android.net.NetworkCapabilities.NET_CAPABILITY_INTERNET
 import android.net.NetworkRequest
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.example.todolist.DoesNetworkHaveInternet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
