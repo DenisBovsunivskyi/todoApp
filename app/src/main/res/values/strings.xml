@@ -14,6 +14,7 @@
     <string name="time_text">14:51</string>
     <string name="last_update_time">Last Update:14.55</string>
     <string name="delete_note_menu">Delete Note</string>
+    <string name="no_internet">Нет интернета</string>
     <string-array name="priorities">
         <item>High Priority</item>
         <item>Medium Priority</item>

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.text.format.DateUtils
 import android.view.inputmethod.InputMethodManager
+import androidx.fragment.app.Fragment
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,3 +29,4 @@ fun hideKeyboard(activity: Activity) {
             currentFocusedView.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
     }
 }
+

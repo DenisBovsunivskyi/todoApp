@@ -2,25 +2,34 @@ package com.example.todolist.fragment
 
 import android.app.Application
 import android.text.TextUtils
-import android.text.format.DateUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import com.example.todolist.ConnectionLiveData
 import com.example.todolist.R
 import com.example.todolist.data.models.Priority
 import com.example.todolist.data.models.ToDoData
-import kotlinx.android.synthetic.main.row_layout.view.*
-import java.text.SimpleDateFormat
+
 
 class SharedViewModel(application: Application): AndroidViewModel(application) {
-
+    val mApplication = application
     val emptyDataBase: MutableLiveData<Boolean> = MutableLiveData(true)
+    val isInternetConnected: MutableLiveData<Boolean> = MutableLiveData(true)
+    lateinit var connectionLiveData:ConnectionLiveData
 
     fun checkIfDataBaseEmpty(toDoData: List<ToDoData>){
         emptyDataBase.value = toDoData.isEmpty()
+    }
+    fun checkIfInternetContected(viewLifecycleOwner: LifecycleOwner){
+        connectionLiveData = ConnectionLiveData(mApplication)
+        connectionLiveData.observe(viewLifecycleOwner, Observer{isNetvorkAwailable ->
+            isInternetConnected.value = isNetvorkAwailable
+        })
     }
 
     val listener: AdapterView.OnItemSelectedListener = object :

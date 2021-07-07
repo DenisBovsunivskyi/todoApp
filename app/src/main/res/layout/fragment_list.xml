@@ -13,14 +13,14 @@
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:paddingTop="8dp"
         android:clipToPadding="false"
+        android:paddingTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        tools:listitem="@layout/row_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/row_layout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -58,4 +58,8 @@
         app:layout_constraintEnd_toEndOf="@+id/recycler_view"
         app:layout_constraintStart_toStartOf="@+id/recycler_view"
         app:layout_constraintTop_toBottomOf="@+id/no_data_image_view" />
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

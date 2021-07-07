@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/listFragment">
+    app:startDestination="@id/loadingFragment">
 
     <fragment
         android:id="@+id/listFragment"
@@ -49,5 +49,17 @@
         <argument
             android:name="currentItem"
             app:argType="com.example.todolist.data.models.ToDoData" />
+    </fragment>
+    <fragment
+        android:id="@+id/loadingFragment"
+        android:name="com.example.todolist.fragment.loading.LoadingFragment"
+        android:label="fragment_loading"
+        tools:layout="@layout/fragment_loading" >
+
+        <action
+            android:id="@+id/action_loadingFragment_to_listFragment"
+            app:destination="@id/listFragment"
+            app:popUpTo="@id/my_nav"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

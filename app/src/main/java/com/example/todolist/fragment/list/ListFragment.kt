@@ -15,6 +15,7 @@ import com.example.todolist.R
 import com.example.todolist.data.viewmodel.ToDoViewModel
 import com.example.todolist.fragment.SharedViewModel
 import com.example.todolist.fragment.list.adapter.ListAdapter
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_list.view.*
 import kotlin.system.exitProcess
 
@@ -25,23 +26,25 @@ class ListFragment : Fragment() {
     private val adapter: ListAdapter by lazy { ListAdapter() }
     private val mSharedViewModel: SharedViewModel by viewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
 
+        val view = inflater.inflate(R.layout.fragment_list, container, false)
         val recyclerView = view.recycler_view
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
         // Swipe to delete
         swipeToDelete(recyclerView)
-
         mToDoViewModel.getAllData.observe(viewLifecycleOwner, Observer { data->
             mSharedViewModel.checkIfDataBaseEmpty(data)
             adapter.setData(data)
 
+        })
+        mSharedViewModel.checkIfInternetContected(viewLifecycleOwner)
+        mSharedViewModel.isInternetConnected.observe(viewLifecycleOwner, Observer {
+            showNoInternetSnackBar(it)
         })
         mSharedViewModel.emptyDataBase.observe(viewLifecycleOwner, Observer {
             showEmptyDatabaseViews(it)
@@ -56,6 +59,21 @@ class ListFragment : Fragment() {
 
 
     }
+
+    private fun showNoInternetSnackBar(it: Boolean) {
+         if(!it) {
+             getActivity()?.let {
+                 Snackbar.make(
+                     it.findViewById(android.R.id.content),
+                     "No Internet", Snackbar.LENGTH_LONG
+                 ).show()
+             };
+         }else{
+             Toast.makeText(requireContext(),"Internet OK!", Toast.LENGTH_SHORT).show()
+
+         }
+    }
+
 
     private fun showEmptyDatabaseViews(emptyDatabase:Boolean) {
         if(emptyDatabase){

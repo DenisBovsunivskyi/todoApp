@@ -22,6 +22,7 @@ class AddFragment : Fragment() {
 
     private val mToDoViewModel:ToDoViewModel by viewModels()
     private val mSharedViewModel: SharedViewModel by viewModels()
+    val onOpenApp = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
